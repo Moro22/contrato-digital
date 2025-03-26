@@ -1,0 +1,207 @@
+/* Variables globales */
+:root {
+  --color-primario: #007BFF;
+  --primario-oscuro: #0056b3;
+  --color-borde: #b0c4de;
+  --fondo-claro: #e9f2fa;
+  --fondo-blanco: #fff;
+  --fondo-grupo: #f8f9fd;
+  --fondo-adicional: #f0f8ff;
+  --familia-tipografica: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Reinicio básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales del body */
+body {
+  font-family: var(--familia-tipografica);
+  background-color: var(--fondo-claro);
+  color: #333;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* Contenedor principal del contrato */
+.contract-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: var(--fondo-blanco);
+  border: 1px solid var(--color-borde);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos y subtítulos */
+.contract-container h1 {
+  font-size: 2.5em;
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.contract-container h2 {
+  font-size: 1.75em;
+  color: var(--primario-oscuro);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--color-primario);
+  padding-bottom: 5px;
+}
+
+/* Párrafos */
+.contract-container p {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Fieldset y legend */
+fieldset {
+  border: 1px solid var(--color-primario);
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: var(--fondo-grupo);
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 10px;
+  color: var(--color-primario);
+}
+
+/* Etiquetas de formulario */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--primario-oscuro);
+}
+
+/* Inputs, selects y textarea */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--color-borde);
+  border-radius: 4px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primario);
+  outline: none;
+}
+
+/* Estilo para el canvas de la firma */
+canvas#signature-pad {
+  display: block;
+  margin: 15px auto;
+  border: 2px solid var(--color-primario);
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+/* Botones */
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: var(--color-primario);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: var(--primario-oscuro);
+  transform: translateY(-2px);
+}
+
+/* Estilos para secciones y grupos */
+.telefono,
+.rfc,
+.servicio-adicional,
+.concepto-facturable,
+.autorizacion,
+.autorizacion-terceros,
+.acepta-llamadas,
+.correo {
+  margin-bottom: 15px;
+}
+
+/* Grupos de autorización en el apartado de correo electrónico */
+.autorizacion,
+.autorizacion-terceros,
+.acepta-llamadas {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.autorizacion label,
+.autorizacion-terceros label,
+.acepta-llamadas label {
+  flex: 1;
+  margin-right: 10px;
+}
+
+/* Bloques para Servicios Adicionales y Conceptos Facturables */
+.servicio-adicional,
+.concepto-facturable {
+  border: 1px solid var(--color-borde);
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--fondo-adicional);
+  margin-bottom: 10px;
+}
+
+/* Estilo para el logo de la empresa */
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 200px;
+  height: auto;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  .contract-container {
+    padding: 20px;
+  }
+  .contract-container h1 {
+    font-size: 2em;
+  }
+  .contract-container h2 {
+    font-size: 1.5em;
+  }
+  button {
+    font-size: 1em;
+  }
+}

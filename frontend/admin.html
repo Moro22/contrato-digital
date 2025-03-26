@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración de Contratos</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 25px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0056b3;
+      margin-bottom: 20px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .filters input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f9ff;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    let contratos = [];
+
+    async function cargarContratos() {
+      const response = await fetch("http://localhost:3000/contratos");
+      contratos = await response.json();
+      mostrarContratos(contratos);
+    }
+
+    function mostrarContratos(data) {
+      let tableBody = "";
+      data.forEach(contrato => {
+        tableBody += `
+          <tr>
+            <td>${contrato.id}</td>
+            <td>${contrato.nombre}</td>
+            <td>${contrato.paquete}</td>
+            <td>${contrato.fecha_pago}</td>
+            <td><a href="http://localhost:3000/${encodeURI(contrato.pdf)}" target="_blank">Ver PDF</a></td>
+          </tr>
+        `;
+      });
+      document.getElementById("contratos-body").innerHTML = tableBody;
+    }
+
+    function filtrarContratos() {
+      const texto = document.getElementById("filtro-nombre").value.toLowerCase();
+      const fecha = document.getElementById("filtro-fecha").value;
+
+      const filtrados = contratos.filter(c => {
+        const coincideNombre = c.nombre.toLowerCase().includes(texto);
+        const coincideFecha = fecha ? c.fecha_pago === fecha : true;
+        return coincideNombre && coincideFecha;
+      });
+
+      mostrarContratos(filtrados);
+    }
+
+    window.onload = cargarContratos;
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Lista de Contratos</h1>
+    <div class="filters">
+      <input type="text" id="filtro-nombre" placeholder="Buscar por nombre..." oninput="filtrarContratos()">
+      <input type="date" id="filtro-fecha" onchange="filtrarContratos()">
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Paquete</th>
+          <th>Fecha de Pago</th>
+          <th>Contrato PDF</th>
+        </tr>
+      </thead>
+      <tbody id="contratos-body"></tbody>
+    </table>
+  </div>
+</body>
+</html>

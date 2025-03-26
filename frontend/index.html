@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrato Digital</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad"></script>
+</head>
+<body>
+  <div class="contract-container">
+    <!-- Logo de la empresa -->
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo de la Empresa" class="logo">
+    </div>
+    
+    <h1>FORMULARIO PARA EL CONTRATO</h1>
+    <p><strong>INTERFEM TECNOLOGÍAS FEM S.A.S. DE C.V.</strong></p>
+    <p>RFC: TFE1801297N4</p>
+    <p>Dirección: Avenida San Antonio Número 14, Colonia Centro San Antonio, Texcala, Zapotitlán Salinas, Puebla</p>
+    
+    <h2>Datos del Suscriptor</h2>
+    <form id="contractForm">
+      <!-- Sección Suscriptor -->
+      <fieldset>
+        <legend>Suscriptor</legend>
+        
+        <label>Tipo de Persona:</label>
+        <select name="tipo_persona">
+          <option value="fisica">Persona Física</option>
+          <option value="moral">Persona Moral</option>
+        </select>
+        
+        <label>Nombre/Razón Social o Denominación:</label>
+        <input type="text" name="nombre" required>
+        
+        <label>Representante Legal:</label>
+        <input type="text" name="representante" placeholder="Ingrese el nombre del representante legal" >
+      </fieldset>
+      
+      <!-- Sección Domicilio -->
+      <fieldset>
+        <legend>Domicilio</legend>
+        
+        <label>Nombre de la Calle:</label>
+        <input type="text" name="calle" required>
+        
+        <label># Ext:</label>
+        <input type="text" name="numero_exterior" required>
+        
+        <label># Int:</label>
+        <input type="text" name="numero_interior">
+        
+        <label>Colonia:</label>
+        <input type="text" name="colonia" required>
+        
+        <label>Alcaldía o Municipio:</label>
+        <input type="text" name="alcaldia_municipio" required>
+        
+        <label>Estado:</label>
+        <input type="text" name="estado" required>
+        
+        <label>C.P:</label>
+        <input type="text" name="codigo_postal" >
+        
+        <div class="telefono">
+          <label>Tipo de Teléfono:</label>
+          <select name="tipo_telefono">
+            <option value="fijo">Teléfono Fijo</option>
+            <option value="movil">Teléfono Móvil</option>
+          </select>
+          
+          <label>Número de Teléfono:</label>
+          <input type="text" name="telefono" required>
+        </div>
+        
+        <div class="rfc">
+          <label>RFC:</label>
+          <input type="text" name="rfc" >
+        </div>
+      </fieldset>
+      
+      <!-- Sección Servicio de Internet Fijo -->
+      <fieldset>
+        <legend>Servicio de Internet Fijo</legend>
+        
+        <label>Descripción del Paquete/Oferta:</label>
+        <textarea name="descripcion_paquete" required></textarea>
+        
+        <label>Folio IFT:</label>
+        <input type="text" name="folio_ift" >
+        
+        <label>Total Mensualidad ($ M.N):</label>
+        <input type="text" name="total_mensualidad" required>
+        
+        <label>Aplica Tarifa por Reconexión:</label>
+        <select name="tarifa_reconexion">
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+        
+        <label>Fecha de Pago:</label>
+        <input type="date" name="fecha_pago_servicio" required>
+      </fieldset>
+      
+      <!-- Sección Datos del Equipo -->
+      <fieldset>
+        <legend>Datos del Equipo</legend>
+        
+        <div class="comodato">
+          <label>¿Es Comodato?</label>
+          <select name="comodato">
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        
+        <label>Marca:</label>
+        <input type="text" name="marca" >
+        
+        <label>Modelo:</label>
+        <input type="text" name="modelo" >
+        
+        <label>Número de Serie:</label>
+        <input type="text" name="numero_serie" >
+        
+        <label>Número de Equipos:</label>
+        <input type="number" name="numero_equipos" >
+      </fieldset>
+      
+      <!-- Sección Instalación del Equipo -->
+      <fieldset>
+        <legend>Instalacion del Equipo</legend>
+        <label>Tipo de Instalación:</label>
+        <select name="tipo_instalacion">
+          <option value="antena">Antena</option>
+          <option value="router">Router</option>
+          <option value="mastil">Mástil</option>
+          <option value="cableado">Cableado</option>
+        </select>
+        
+        <label>Dirección Instalación:</label>
+        <input type="text" name="direccion_instalacion" >
+        
+        <label>Fecha:</label>
+        <input type="date" name="fecha_instalacion" >
+        
+        <label>Hora:</label>
+        <input type="time" name="hora_instalacion" >
+        
+        <label>Costo de la Instalación:</label>
+        <input type="text" name="costo_instalacion" >
+      </fieldset>
+      
+      <!-- Sección Método de Pago -->
+      <fieldset>
+        <legend>Método de Pago</legend>
+        <label>Seleccione el método de pago:</label>
+        <select name="metodo_pago">
+          <option value="efectivo">Efectivo</option>
+          <option value="tarjeta">Domiciliado con Tarjeta</option>
+          <option value="transferencia">Transferencia Bancaria</option>
+          <option value="deposito">Depósito a Cuenta Bancaria</option>
+        </select>
+      </fieldset>
+      
+      <!-- Sección Datos para el Método de Pago Elegido -->
+      <fieldset>
+        <legend>Datos para el Método de Pago Elegido</legend>
+        <textarea name="datos_metodo_pago" placeholder="Ingrese los datos correspondientes al método de pago elegido" ></textarea>
+      </fieldset>
+      
+      <!-- Sección Servicios Adicionales -->
+      <fieldset>
+        <legend>Servicios Adicionales</legend>
+      
+        <div class="servicio-adicional">
+          <label>Nombre del Servicio 1:</label>
+          <input type="text" name="nombre_servicio_1">
+      
+          <label>Descripción:</label>
+          <textarea name="descripcion_servicio_1"></textarea>
+      
+          <label>Costo:</label>
+          <input type="text" name="costo_servicio_1">
+        </div>
+      
+        <div class="servicio-adicional">
+          <label>Nombre del Servicio 2:</label>
+          <input type="text" name="nombre_servicio_2">
+      
+          <label>Descripción:</label>
+          <textarea name="descripcion_servicio_2"></textarea>
+      
+          <label>Costo:</label>
+          <input type="text" name="costo_servicio_2">
+        </div>
+      </fieldset>      
+      
+      <!-- Sección Conceptos Facturables -->
+      <fieldset>
+        <legend>CONCEPTOS FACTURABLES</legend>
+        <p>(Ejemplo: Costo por cambio de domicilio, Costos administrativos adicionales)</p>
+      
+        <div class="concepto-facturable">
+          <label>Nombre del Concepto 1:</label>
+          <input type="text" name="nombre_concepto_1">
+      
+          <label>Descripción:</label>
+          <textarea name="descripcion_concepto_1"></textarea>
+      
+          <label>Costo:</label>
+          <input type="text" name="costo_concepto_1">
+        </div>
+      
+        <div class="concepto-facturable">
+          <label>Nombre del Concepto 2:</label>
+          <input type="text" name="nombre_concepto_2">
+      
+          <label>Descripción:</label>
+          <textarea name="descripcion_concepto_2"></textarea>
+      
+          <label>Costo:</label>
+          <input type="text" name="costo_concepto_2">
+        </div>
+        </fieldset>      
+      
+      <!-- Sección Autorización de Envío por Correo Electrónico -->
+      <fieldset>
+        <legend>EL SUSCRIPTOR AUTORIZA SE LE ENVÍE POR CORREO ELECTRÓNICO</legend>
+        
+        <div class="autorizacion">
+          <label>Factura:</label>
+          <select name="autorizacion_factura" required>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        
+        <div class="autorizacion">
+          <label>Carta de Derechos Mínimos:</label>
+          <select name="autorizacion_carta" required>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        
+        <div class="autorizacion">
+          <label>Contrato de Adhesión:</label>
+          <select name="autorizacion_contrato" required>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        
+        <div class="correo">
+          <label>Correo Electrónico Autorizado:</label>
+          <input type="email" name="correo_autorizado" >
+        </div>
+      </fieldset>
+      
+      <!-- Sección Autorización para Uso de Información del Suscriptor -->
+      <fieldset>
+        <legend>AUTORIZACIÓN PARA USO DE INFORMACIÓN DEL SUSCRIPTOR</legend>
+        
+        <div class="autorizacion-terceros">
+          <label>
+            El Suscriptor autoriza que su información sea cedida o transmitida por el proveedor a terceros con fines mercadotécnicos o publicitarios:
+          </label>
+          <select name="autorizacion_informacion_terceros" required class="small-select">
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        
+        <div class="acepta-llamadas">
+          <label>
+            El suscriptor acepta recibir llamadas del proveedor de promociones de servicios o paquetes:
+          </label>
+          <select name="acepta_llamadas_promociones" required class="small-select">
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </fieldset>
+      
+      <!-- Sección Firma Digital -->
+      <h2>Firma Digital</h2>
+      <canvas id="signature-pad" width="400" height="200" style="border:1px solid #000;"></canvas>
+      <button type="button" id="clear-signature">Borrar Firma</button>
+      
+      <button type="submit">Generar Contrato</button>
+    </form>
+  </div>
+  
+  <script>
+    var canvas = document.getElementById("signature-pad");
+    var signaturePad = new SignaturePad(canvas);
+    document.getElementById("clear-signature").addEventListener("click", function () {
+      signaturePad.clear();
+    });
+  
+    document.getElementById("contractForm").addEventListener("submit", async function (event) {
+      event.preventDefault(); // Evitar que la página se recargue
+
+      // Capturar la firma en base64
+      let firmaImagen = signaturePad.toDataURL(); 
+
+      // Crear el objeto FormData para enviar los datos del formulario
+      let formData = new FormData(this);
+      formData.append("firma", firmaImagen); // Agregar la firma como imagen
+
+      try {
+        const response = await fetch("http://localhost:3000/generar-contrato", {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+        alert(result.message); // Mostrar el mensaje del backend
+
+      } catch (error) {
+        console.error("❌ Error al enviar el contrato:", error);
+        alert("Error al generar el contrato. Intenta nuevamente.");
+      }
+    });
+  </script>
+</body>
+</html>
